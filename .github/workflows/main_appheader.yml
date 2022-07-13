@@ -26,6 +26,7 @@ jobs:
           npm install
           npm run build --if-present
           npm run test --if-present
+          npm run build:webpack
       
       - name: Zip artifact for deployment
         run: Compress-Archive . release.zip
