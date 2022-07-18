@@ -3,57 +3,75 @@
 
 # name: Build and deploy Node.js app to Azure Web App - AppHeader
 
+name: Upload To Azure Blob Storage
 on:
   push:
     branches:
       - main
-  workflow_dispatch:
-
 jobs:
-  build:
+  upload:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      - name: Set up Node.js version
-        uses: actions/setup-node@v1
+      - uses: chabad360/hugo-actions@master
+      - uses: bacongobbler/azure-blob-storage-upload@main
         with:
-          node-version: '16.x'
+          source_dir: 'public'
+          container_name: '$react-header'
+          connection_string: ${{ secrets.ConnectionString }}
+          sync: 'true'
 
-      - name: npm install, build, and test
-        run: |
-          npm install
-          npm run build:webpack
+# on:
+#   push:
+#     branches:
+#       - main
+#   workflow_dispatch:
 
-     - script: |
-              mkdir $(Build.ArtifactStagingDirectory)\\dist
-              xcopy "$(System.DefaultWorkingDirectory)\\AppHeader\\dist" $(Build.ArtifactStagingDirectory)\\dist /E/H/C
-            displayName: Copy dist contents
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
 
-    - task: PublishBuildArtifacts@1
-            displayName: "Publish Artifact"
+#       - name: Set up Node.js version
+#         uses: actions/setup-node@v1
+#         with:
+#           node-version: '16.x'
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    environment:
-      name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+#       - name: npm install, build, and test
+#         run: |
+#           npm install
+#           npm run build:webpack
 
-    steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v2
-        with:
-          name: node-app
+#      - script: |
+#               mkdir $(Build.ArtifactStagingDirectory)\\dist
+#               xcopy "$(System.DefaultWorkingDirectory)\\AppHeader\\dist" $(Build.ArtifactStagingDirectory)\\dist /E/H/C
+#             displayName: Copy dist contents
 
-      - name: 'Deploy to Azure Web App'
-        uses: azure/webapps-deploy@v2
-        id: deploy-to-webapp
-        with:
-          app-name: 'AppHeader'
-          slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BD15D3AADC4D4E6AAD20D6C03C6221C8 }}
-          package: .
+#     - task: PublishBuildArtifacts@1
+#             displayName: "Publish Artifact"
+
+#   deploy:
+#     runs-on: ubuntu-latest
+#     needs: build
+#     environment:
+#       name: 'Production'
+#       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+#     steps:
+#       - name: Download artifact from build job
+#         uses: actions/download-artifact@v2
+#         with:
+#           name: node-app
+
+#       - name: 'Deploy to Azure Web App'
+#         uses: azure/webapps-deploy@v2
+#         id: deploy-to-webapp
+#         with:
+#           app-name: 'AppHeader'
+#           slot-name: 'Production'
+#           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BD15D3AADC4D4E6AAD20D6C03C6221C8 }}
+#           package: .
 
 
 # Node.js with Angular
