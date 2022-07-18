@@ -28,11 +28,21 @@ jobs:
         npm install
         npm run build:webpack
         
-    - name: Copy Dist folder
-      run: |
-         mkdir $(Build.ArtifactStagingDirectory)\\dist
-          xcopy "$(System.DefaultWorkingDirectory)\\AppHeader\\dist" $(Build.ArtifactStagingDirectory)\\dist /E/H/C
-          
+    - name: Copy files
+      uses: ulaval/azure-blob-copy-action@v1
+      with:
+        action: upload
+        connection_string: https://singlespa.blob.core.windows.net/?sv=2021-06-08&ss=bfqt&srt=sco&sp=rwdlacupitfx&se=2022-07-18T19:02:13Z&st=2022-07-18T11:02:13Z&spr=https&sig=h3UQyc5XwDcZA%2Fxh5Q4xu8Qg7fAPTEn82VNBWAx4nHU%3D
+        container_name: $react-header
+        local_directory: dist
+        http_headers: |
+          - glob: "**/*.????????.*"
+            headers:
+              Cache-Control: public, max-age=604800, immutable
+
+          - glob: "**/*"
+            headers:
+              Cache-Control: public, max-age=120, s-maxage=180, proxy-revalidate
     # - name: Deploy to Azure
     #   uses: TravisSpomer/deploy-to-azure-storage@v1.4.0
     #   with:
