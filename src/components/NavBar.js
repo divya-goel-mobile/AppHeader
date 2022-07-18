@@ -14,9 +14,9 @@ import {
   Banner,
   BlankDiv,
 } from "../styles/Navbar.styles";
-// import ProfileImg from "../assets/profile.png";
-// import SearchImg from "../assets/search.png";
-// import BannerImg from "../assets/banner.png";
+import ProfileImg from "../assets/profile.png";
+import SearchImg from "../assets/search.png";
+//import BannerImg from "../assets/banner.png";
 
 function Navbar() {
   const [extendNavbar, setExtendNavbar] = useState(false);
@@ -42,8 +42,8 @@ function Navbar() {
         </LeftContainer>
         <RightContainer>
           <SearchBarContainer />
-          {/* <Logo src={SearchImg}></Logo>
-          <Logo src={ProfileImg}></Logo> */}
+          <Logo src={SearchImg}></Logo>
+          <Logo src={ProfileImg}></Logo>
         </RightContainer>
       </NavbarInnerContainer>
       {extendNavbar && (
