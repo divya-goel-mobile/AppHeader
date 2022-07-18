@@ -62,51 +62,58 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
-name: Build and deploy Node.js app to Azure Web App - AppHeader
-
-on:
-  push:
-    branches:
+trigger:
+  branches:
+    include:
       - main
-  workflow_dispatch:
+  paths:
+    include:
+      - react-app
 
-jobs:
-  build:
-    runs-on: windows-latest 
-  steps:
-      - uses: actions/checkout@v2
-
-      - name: Set up Node.js version
-        uses: actions/setup-node@v1
-        with:
-          node-version: '16.x'
-
+stages:
+  - stage: Build
+    pool:
+      vmImage: "windows-latest"
+    jobs:
+      - job: Build
+        displayName: "React App Build"
+        workspace:
+          clean: all
         steps:
           - task: NodeTool@0
             inputs:
               versionSpec: "16.x"
             displayName: "Install Node.js"
 
-          - name: npm install, build, and test
-            run: |
-               npm install
-               npm run build:webpack
-        
+          - task: Npm@1
+            inputs:
+              command: "install"
+              workingDir: "$(System.DefaultWorkingDirectory)/react-app"
+            displayName: "Npm Install"
+
+          - task: Npm@1
+            inputs:
+              command: custom
+              customCommand: "run build:webpack"
+              workingDir: "$(System.DefaultWorkingDirectory)/react-app"
+            displayName: "Build React app"
+
           - script: |
               mkdir $(Build.ArtifactStagingDirectory)\\dist
-              xcopy "$(System.DefaultWorkingDirectory)\\APPHEADER\\dist" $(Build.ArtifactStagingDirectory)\\dist /E/H/C
+              xcopy "$(System.DefaultWorkingDirectory)\\react-app\\dist" $(Build.ArtifactStagingDirectory)\\dist /E/H/C
             displayName: Copy dist contents
 
           - task: PublishBuildArtifacts@1
             displayName: "Publish Artifact"
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    environment:
-      name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-      
+  - stage: Deploy
+    dependsOn: Build
+    condition: succeeded('Build')
+    variables:
+      - group: SECRET-DEV
+      - group: VGRP-DEV
+    pool:
+      vmImage: "windows-latest"
     jobs:
       - deployment: Deploy
         displayName: Deploy to Azure
@@ -122,4 +129,4 @@ jobs:
                     scriptType: batch
                     scriptLocation: inlineScript
                     inlineScript: |
-                      az storage blob upload-batch --overwrite -d react-header--account-name $(storageAccount) --account-key $(accountkey) -s "$(Agent.BuildDirectory)\\drop\\dist"
+                      az storage blob upload-batch --overwrite -d react-microapp --account-name $(storageAccount) --account-key $(accountkey) -s "$(Agent.BuildDirectory)\\drop\\dist"
