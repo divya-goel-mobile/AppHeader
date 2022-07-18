@@ -28,10 +28,12 @@ jobs:
         npm install
         npm run build:webpack
         
-     - script: |
+     - name: Copy Dist folder
+       run: |
          mkdir $(Build.ArtifactStagingDirectory)\\dist
           xcopy "$(System.DefaultWorkingDirectory)\\AppHeader\\dist" $(Build.ArtifactStagingDirectory)\\dist /E/H/C
           displayName: Copy dist contents
+          
     # - name: Deploy to Azure
     #   uses: TravisSpomer/deploy-to-azure-storage@v1.4.0
     #   with:
