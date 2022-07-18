@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: chabad360/hugo-actions@master
+      - uses: divya-goel-mobile/AppHeader@main
       - uses: bacongobbler/azure-blob-storage-upload@main
         with:
           source_dir: 'public'
