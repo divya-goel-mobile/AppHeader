@@ -62,13 +62,11 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
-trigger:
-  branches:
-    include:
+on:
+  push:
+    branches:
       - main
-  paths:
-    include:
-      - react-app
+  workflow_dispatch:
 
 stages:
   - stage: Build
@@ -88,19 +86,19 @@ stages:
           - task: Npm@1
             inputs:
               command: "install"
-              workingDir: "$(System.DefaultWorkingDirectory)/react-app"
+              workingDir: "$(System.DefaultWorkingDirectory)/AppHeader"
             displayName: "Npm Install"
 
           - task: Npm@1
             inputs:
               command: custom
               customCommand: "run build:webpack"
-              workingDir: "$(System.DefaultWorkingDirectory)/react-app"
+              workingDir: "$(System.DefaultWorkingDirectory)/AppHeader"
             displayName: "Build React app"
 
           - script: |
               mkdir $(Build.ArtifactStagingDirectory)\\dist
-              xcopy "$(System.DefaultWorkingDirectory)\\react-app\\dist" $(Build.ArtifactStagingDirectory)\\dist /E/H/C
+              xcopy "$(System.DefaultWorkingDirectory)\\AppHeader\\dist" $(Build.ArtifactStagingDirectory)\\dist /E/H/C
             displayName: Copy dist contents
 
           - task: PublishBuildArtifacts@1
@@ -129,4 +127,4 @@ stages:
                     scriptType: batch
                     scriptLocation: inlineScript
                     inlineScript: |
-                      az storage blob upload-batch --overwrite -d react-microapp --account-name $(storageAccount) --account-key $(accountkey) -s "$(Agent.BuildDirectory)\\drop\\dist"
+                      az storage blob upload-batch --overwrite -d react-header --account-name $(storageAccount) --account-key $(accountkey) -s "$(Agent.BuildDirectory)\\drop\\dist"
