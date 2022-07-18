@@ -3,23 +3,37 @@
 
 # name: Build and deploy Node.js app to Azure Web App - AppHeader
 
-name: Upload To Azure Blob Storage
+name: Deploy website
+
 on:
+  workflow_dispatch:
   push:
-    branches:
-      - main
+    branches: [ main ]
+
 jobs:
-  upload:
+  build-and-deploy:
+    name: Build and deploy
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v2
-      - uses: divya-goel-mobile/AppHeader@main
-      - uses: bacongobbler/azure-blob-storage-upload@main
-        with:
-          source_dir: 'public'
-          container_name: '$react-header'
-          connection_string: ${{ secrets.ConnectionString }}
-          sync: 'true'
+    - uses: actions/checkout@v2
+      
+    - name: Install Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+      
+    - name: Build website
+      run: |
+        npm install
+        npm run build:webpack
+        
+    - name: Deploy to Azure
+      uses: TravisSpomer/deploy-to-azure-storage@v1.4.0
+      with:
+        source-path: dist
+        container: react-header
+        sas-url: https://singlespa.blob.core.windows.net/?sv=2021-06-08&ss=bfqt&srt=sco&sp=rwdlacupitfx&se=2022-07-18T19:02:13Z&st=2022-07-18T11:02:13Z&spr=https&sig=h3UQyc5XwDcZA%2Fxh5Q4xu8Qg7fAPTEn82VNBWAx4nHU%3D
 
 # on:
 #   push:
