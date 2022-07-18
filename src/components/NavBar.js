@@ -29,7 +29,7 @@ function Navbar() {
             <NavbarLink to="/home"> Home</NavbarLink>
             <NavbarLink to="/products">Products</NavbarLink>
             <NavbarLink to="/contact">Claims</NavbarLink>
-            <NavbarLink to="/about">Support Prudential</NavbarLink>
+            <NavbarLink to="/about">Support</NavbarLink>
             <OpenLinksButton
               onClick={() => {
                 setExtendNavbar(!extendNavbar);
