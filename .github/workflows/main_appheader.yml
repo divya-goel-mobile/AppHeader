@@ -28,12 +28,16 @@ jobs:
         npm install
         npm run build:webpack
         
-    - name: Deploy to Azure
-      uses: TravisSpomer/deploy-to-azure-storage@v1.4.0
-      with:
-        source-path: dist
-        container: react-header
-        sas-url: https://singlespa.blob.core.windows.net/?sv=2021-06-08&ss=bfqt&srt=sco&sp=rwdlacupitfx&se=2022-07-18T19:02:13Z&st=2022-07-18T11:02:13Z&spr=https&sig=h3UQyc5XwDcZA%2Fxh5Q4xu8Qg7fAPTEn82VNBWAx4nHU%3D
+     - script: |
+         mkdir $(Build.ArtifactStagingDirectory)\\dist
+          xcopy "$(System.DefaultWorkingDirectory)\\AppHeader\\dist" $(Build.ArtifactStagingDirectory)\\dist /E/H/C
+          displayName: Copy dist contents
+    # - name: Deploy to Azure
+    #   uses: TravisSpomer/deploy-to-azure-storage@v1.4.0
+    #   with:
+    #     source-path: dist
+    #     container: react-header
+    #     sas-url: https://singlespa.blob.core.windows.net/?sv=2021-06-08&ss=bfqt&srt=sco&sp=rwdlacupitfx&se=2022-07-18T19:02:13Z&st=2022-07-18T11:02:13Z&spr=https&sig=h3UQyc5XwDcZA%2Fxh5Q4xu8Qg7fAPTEn82VNBWAx4nHU%3D
 
 # on:
 #   push:
