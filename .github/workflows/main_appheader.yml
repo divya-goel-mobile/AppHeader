@@ -33,7 +33,7 @@ jobs:
       with:
         action: upload
         connection_string: BlobEndpoint=https://singlespa.blob.core.windows.net/;QueueEndpoint=https://singlespa.queue.core.windows.net/;FileEndpoint=https://singlespa.file.core.windows.net/;TableEndpoint=https://singlespa.table.core.windows.net/;SharedAccessSignature=sv=2021-06-08&ss=bfqt&srt=sco&sp=rwdlacupitfx&se=2022-07-18T19:02:13Z&st=2022-07-18T11:02:13Z&spr=https&sig=h3UQyc5XwDcZA%2Fxh5Q4xu8Qg7fAPTEn82VNBWAx4nHU%3D
-        container_name: $react-header
+        container_name: react-header
         local_directory: dist
         http_headers: |
           - glob: "**/*.????????.*"
