@@ -32,7 +32,7 @@ jobs:
       uses: ulaval/azure-blob-copy-action@v1
       with:
         action: upload
-        connection_string: BlobEndpoint=https://singlespa.blob.core.windows.net/;QueueEndpoint=https://singlespa.queue.core.windows.net/;FileEndpoint=https://singlespa.file.core.windows.net/;TableEndpoint=https://singlespa.table.core.windows.net/;SharedAccessSignature=sv=2021-06-08&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2022-07-19T14:41:36Z&st=2022-07-19T06:41:36Z&spr=https&sig=%2Fnm%2B5lGJ4yITaNyHJ90J5bdPNtNFZaWBLTuASGhcHpI%3D
+        connection_string: ${{ secrets.CONNECTION_STRING }}
         container_name: react-header
         local_directory: dist
         http_headers: |
