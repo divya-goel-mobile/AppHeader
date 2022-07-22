@@ -20,12 +20,12 @@ export const LeftContainer = styled.div`
 `;
 
 export const RightContainer = styled.div`
-  flex: 30%;
+  flex: 60%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   padding-right: 50px;
   align-items: center;
-  justify-content: center;
+  //justify-content: center;
 `;
 
 export const NavbarInnerContainer = styled.div`
@@ -59,7 +59,7 @@ export const NavbarLinkExtended = styled(Link)`
 
 export const Logo = styled.img`
   margin: 10px;
-  max-width: 30px;
+  max-width: 20px;
   height: auto;
   @media (max-width: 700px) {
     display: none;
@@ -108,3 +108,55 @@ export const BlankDiv = styled.div`
   max-width: 100%;
   height: 200px;
 `;
+
+export const PrudentialLogo = styled.img`
+  margin: 130px;
+  max-width: 200px;
+  height: auto;
+  @media (max-width: 700px) {
+    display: none;
+  }
+`;
+
+export const ToggleContainer = styled.div`
+  width: 300px
+  height: 35px;
+  display: flex;
+  background: white;
+  margin: 15px;
+`
+export const TogglePersonalContainer = styled.button`
+  width: 100px;
+  height: 30px;
+  display: flex;
+  background: white;
+  font-size: 15px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  justify-content: center;
+  align-items: center;
+
+`
+export const ToggleEterpriseContainer = styled.button`
+  width: 100px;
+  height: 30px;
+  display: flex;
+  background: lightGray;
+  font-size: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  justify-content: center;
+  align-items: center;
+`
+
+export const LoginButton = styled.button`
+  margin: 10px;
+  width: 80px;
+  height: 30px;
+  display: flex;
+  background: lightGray;
+  font-size: 15px;
+  border-radius: 15px;
+  justify-content: center;
+  align-items: center;
+`

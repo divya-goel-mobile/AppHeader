@@ -13,9 +13,16 @@ import {
   SearchBarContainer,
   Banner,
   BlankDiv,
+  PrudentialLogo,
+  ToggleContainer,
+  TogglePersonalContainer,
+  ToggleEterpriseContainer,
+  LoginButton
 } from "../styles/Navbar.styles";
-import ProfileImg from "../assets/profile.png";
+import MessageLogo from "../assets/message.png";
 import SearchImg from "../assets/search.png";
+import LogoImg from "../assets/prudential-logo.jpeg";
+
 //import BannerImg from "../assets/banner.png";
 
 function Navbar() {
@@ -25,6 +32,7 @@ function Navbar() {
       {/* <Banner src={BannerImg}></Banner> */}
       <NavbarInnerContainer>
         <LeftContainer>
+          <PrudentialLogo src={LogoImg}></PrudentialLogo>
           <NavbarLinkContainer>
             <NavbarLink to="/home"> Home</NavbarLink>
             <NavbarLink to="/products">Products</NavbarLink>
@@ -41,9 +49,16 @@ function Navbar() {
           </NavbarLinkContainer>
         </LeftContainer>
         <RightContainer>
-          <SearchBarContainer />
-          <Logo src={SearchImg}></Logo>
-          <Logo src={ProfileImg}></Logo>
+          <ToggleContainer></ToggleContainer>
+          <div>
+            <Logo src={SearchImg}></Logo>
+            <Logo src={MessageLogo}></Logo>
+          </div>
+          <ToggleContainer>
+            <TogglePersonalContainer>Personal</TogglePersonalContainer>
+            <ToggleEterpriseContainer>Enterprise</ToggleEterpriseContainer>
+          </ToggleContainer>
+          <LoginButton>Login</LoginButton>
         </RightContainer>
       </NavbarInnerContainer>
       {extendNavbar && (
