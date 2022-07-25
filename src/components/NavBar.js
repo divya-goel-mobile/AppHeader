@@ -17,7 +17,9 @@ import {
   ToggleContainer,
   TogglePersonalContainer,
   ToggleEterpriseContainer,
-  LoginButton
+  LoginButton,
+  NavBarRedContainer,
+  NavBarRedInnerContainer
 } from "../styles/Navbar.styles";
 import MessageLogo from "../assets/message.png";
 import SearchImg from "../assets/search.png";
@@ -33,12 +35,7 @@ function Navbar() {
       <NavbarInnerContainer>
         <LeftContainer>
           <PrudentialLogo src={LogoImg}></PrudentialLogo>
-          <NavbarLinkContainer>
-            <NavbarLink to="/home"> Home</NavbarLink>
-            <NavbarLink to="/products">Products</NavbarLink>
-            <NavbarLink to="/contact">Claims</NavbarLink>
-            <NavbarLink to="/about">Support</NavbarLink>
-            <OpenLinksButton
+          <OpenLinksButton
               onClick={() => {
                 setExtendNavbar(!extendNavbar);
               }}
@@ -46,7 +43,6 @@ function Navbar() {
               {" "}
               {extendNavbar ? <>&#10005;</> : <> &#8801;</>}
             </OpenLinksButton>
-          </NavbarLinkContainer>
         </LeftContainer>
         <RightContainer>
           <ToggleContainer></ToggleContainer>
@@ -60,6 +56,7 @@ function Navbar() {
           </ToggleContainer>
           <LoginButton>Login</LoginButton>
         </RightContainer>
+
       </NavbarInnerContainer>
       {extendNavbar && (
         <NavbarExtendedContainer>
@@ -76,6 +73,16 @@ function Navbar() {
           <NavbarLinkExtended to="/about">Login</NavbarLinkExtended>
         </NavbarExtendedContainer>
       )}
+      <NavBarRedContainer>
+        <NavBarRedInnerContainer>
+          <NavbarLink to="/home"> We Do</NavbarLink>
+          <NavbarLink to="/products">Products</NavbarLink>
+          <NavbarLink to="/contact">Work With Us</NavbarLink>
+          <NavbarLink to="/about">Claims & Services</NavbarLink>
+          <NavbarLink to="/about">Prioority Programme</NavbarLink>
+          <NavbarLink to="/about">About Us</NavbarLink>
+        </NavBarRedInnerContainer>
+      </NavBarRedContainer>
     </NavbarContainer>
   );
 }

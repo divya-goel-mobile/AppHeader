@@ -39,11 +39,11 @@ export const NavbarLinkContainer = styled.div`
 `;
 
 export const NavbarLink = styled(Link)`
-  color: gray;
+  color: white;
   font-size: large;
   font-family: Arial, Helvetica, sans-serif;
   text-decoration: none;
-  margin: 10px;
+  margin: 15px;
   @media (max-width: 700px) {
     display: none;
   }
@@ -124,6 +124,7 @@ export const ToggleContainer = styled.div`
   display: flex;
   background: white;
   margin: 15px;
+  
 `
 export const TogglePersonalContainer = styled.button`
   width: 100px;
@@ -135,6 +136,7 @@ export const TogglePersonalContainer = styled.button`
   border-bottom-left-radius: 15px;
   justify-content: center;
   align-items: center;
+  border-style: solid;
 
 `
 export const ToggleEterpriseContainer = styled.button`
@@ -147,6 +149,7 @@ export const ToggleEterpriseContainer = styled.button`
   border-bottom-right-radius: 15px;
   justify-content: center;
   align-items: center;
+  border-style: solid;
 `
 
 export const LoginButton = styled.button`
@@ -154,9 +157,32 @@ export const LoginButton = styled.button`
   width: 80px;
   height: 30px;
   display: flex;
-  background: lightGray;
+  background: white;
   font-size: 15px;
   border-radius: 15px;
   justify-content: center;
   align-items: center;
+  border-style: solid;
+`
+
+export const NavBarRedContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+
+  @media (max-width: 700px) {
+    display: none;
+  }
+`
+export const NavBarRedInnerContainer = styled.div`
+display: flex;
+background-color: #ed1b2e;
+min-width:700px;         
+width: auto !important; 
+height: 60px;
+border-radius: 5px;
+justify-content: center;
+align-items: center;
 `
