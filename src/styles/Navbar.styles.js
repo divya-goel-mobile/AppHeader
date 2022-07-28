@@ -16,11 +16,11 @@ export const LeftContainer = styled.div`
   flex: 70%;
   display: flex;
   align-items: center;
-  padding-left: 5%;
+  //padding-left: 5%;
 `;
 
 export const RightContainer = styled.div`
-  flex: 60%;
+  flex: 80%;
   display: flex;
   justify-content: center;
   padding-right: 50px;
@@ -61,9 +61,9 @@ export const Logo = styled.img`
   margin: 10px;
   max-width: 20px;
   height: auto;
-  @media (max-width: 700px) {
-    display: none;
-  }
+  // @media (max-width: 700px) {
+  //   display: none;
+  // }
 `;
 
 export const OpenLinksButton = styled.button`
@@ -114,7 +114,8 @@ export const PrudentialLogo = styled.img`
   max-width: 200px;
   height: auto;
   @media (max-width: 700px) {
-    display: none;
+    margin: 0px;
+    width: 120px;
   }
 `;
 
@@ -137,6 +138,9 @@ export const TogglePersonalContainer = styled.button`
   justify-content: center;
   align-items: center;
   border-style: solid;
+  @media (max-width: 700px) {
+    display: none;
+  }
 
 `
 export const ToggleEterpriseContainer = styled.button`
@@ -150,6 +154,9 @@ export const ToggleEterpriseContainer = styled.button`
   justify-content: center;
   align-items: center;
   border-style: solid;
+  @media (max-width: 700px) {
+    display: none;
+  }
 `
 
 export const LoginButton = styled.button`
@@ -163,6 +170,9 @@ export const LoginButton = styled.button`
   justify-content: center;
   align-items: center;
   border-style: solid;
+  @media (max-width: 700px) {
+    display: none;
+  }
 `
 
 export const NavBarRedContainer = styled.div`

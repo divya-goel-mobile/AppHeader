@@ -35,7 +35,14 @@ function Navbar() {
       <NavbarInnerContainer>
         <LeftContainer>
           <PrudentialLogo src={LogoImg}></PrudentialLogo>
-          <OpenLinksButton
+         
+        </LeftContainer>
+        <RightContainer>
+          <ToggleContainer></ToggleContainer>
+          <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+            <Logo src={SearchImg}></Logo>
+            <Logo src={MessageLogo}></Logo>
+            <OpenLinksButton
               onClick={() => {
                 setExtendNavbar(!extendNavbar);
               }}
@@ -43,12 +50,6 @@ function Navbar() {
               {" "}
               {extendNavbar ? <>&#10005;</> : <> &#8801;</>}
             </OpenLinksButton>
-        </LeftContainer>
-        <RightContainer>
-          <ToggleContainer></ToggleContainer>
-          <div>
-            <Logo src={SearchImg}></Logo>
-            <Logo src={MessageLogo}></Logo>
           </div>
           <ToggleContainer>
             <TogglePersonalContainer>Personal</TogglePersonalContainer>
@@ -62,13 +63,15 @@ function Navbar() {
         <NavbarExtendedContainer>
           <NavbarLinkExtended to="/home"> Home</NavbarLinkExtended>
           <NavbarLinkExtended to="/products">Products</NavbarLinkExtended>
-          <NavbarLinkExtended to="/contact">Claims</NavbarLinkExtended>
+          <NavbarLinkExtended to="/aboutUs">About Us</NavbarLinkExtended>
+          <NavbarLinkExtended to="/career">Careers</NavbarLinkExtended>
+          <NavbarLinkExtended to="/joinWaitList">Join the Waitlist</NavbarLinkExtended>
+
           <NavbarLinkExtended to="/about">
             Support Prudential
           </NavbarLinkExtended>
           <BlankDiv />
           <NavbarLinkExtended to="/contact">Search</NavbarLinkExtended>
-          <NavbarLinkExtended to="/about">Contact sales</NavbarLinkExtended>
           <NavbarLinkExtended to="/about">Sign Up</NavbarLinkExtended>
           <NavbarLinkExtended to="/about">Login</NavbarLinkExtended>
         </NavbarExtendedContainer>
@@ -77,10 +80,9 @@ function Navbar() {
         <NavBarRedInnerContainer>
           <NavbarLink to="/home"> We Do</NavbarLink>
           <NavbarLink to="/products">Products</NavbarLink>
-          <NavbarLink to="/contact">Work With Us</NavbarLink>
-          <NavbarLink to="/about">Claims & Services</NavbarLink>
-          <NavbarLink to="/about">Prioority Programme</NavbarLink>
-          <NavbarLink to="/about">About Us</NavbarLink>
+          <NavbarLink to="/aboutUs">About Us</NavbarLink>
+          <NavbarLink to="/career">Careers</NavbarLink>
+          <NavbarLink to="/joinWaitList">Join the Waitlist</NavbarLink>
         </NavBarRedInnerContainer>
       </NavBarRedContainer>
     </NavbarContainer>
