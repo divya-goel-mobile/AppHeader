@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 import {
   NavbarContainer,
   LeftContainer,
@@ -19,35 +19,40 @@ import {
   ToggleEterpriseContainer,
   LoginButton,
   NavBarRedContainer,
-  NavBarRedInnerContainer
-} from "../styles/Navbar.styles";
-import MessageLogo from "../assets/message.png";
-import SearchImg from "../assets/search.png";
-import LogoImg from "../assets/prudential-logo.jpeg";
+  NavBarRedInnerContainer,
+} from '../styles/Navbar.styles'
+import MessageLogo from '../assets/message.png'
+import SearchImg from '../assets/search.png'
+import LogoImg from '../assets/prudential-logo.jpeg'
 
 //import BannerImg from "../assets/banner.png";
 
 function Navbar() {
-  const [extendNavbar, setExtendNavbar] = useState(false);
+  const [extendNavbar, setExtendNavbar] = useState(false)
   return (
     <NavbarContainer extendNavbar={extendNavbar}>
       {/* <Banner src={BannerImg}></Banner> */}
       <NavbarInnerContainer>
         <LeftContainer>
           <PrudentialLogo src={LogoImg}></PrudentialLogo>
-         
         </LeftContainer>
         <RightContainer>
           <ToggleContainer></ToggleContainer>
-          <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
             <Logo src={SearchImg}></Logo>
             <Logo src={MessageLogo}></Logo>
             <OpenLinksButton
               onClick={() => {
-                setExtendNavbar(!extendNavbar);
+                setExtendNavbar(!extendNavbar)
               }}
             >
-              {" "}
+              {' '}
               {extendNavbar ? <>&#10005;</> : <> &#8801;</>}
             </OpenLinksButton>
           </div>
@@ -57,15 +62,43 @@ function Navbar() {
           </ToggleContainer>
           <LoginButton>Login</LoginButton>
         </RightContainer>
-
       </NavbarInnerContainer>
       {extendNavbar && (
         <NavbarExtendedContainer>
-          <NavbarLinkExtended to="/home"> Home</NavbarLinkExtended>
+          <NavbarLinkExtended
+            onClick={() => {
+              setExtendNavbar(!extendNavbar)
+            }}
+            to="/home"
+          >
+            {' '}
+            Home
+          </NavbarLinkExtended>
           <NavbarLinkExtended to="/products">Products</NavbarLinkExtended>
-          <NavbarLinkExtended to="/aboutUs">About Us</NavbarLinkExtended>
-          <NavbarLinkExtended to="/career">Careers</NavbarLinkExtended>
-          <NavbarLinkExtended to="/joinWaitList">Join the Waitlist</NavbarLinkExtended>
+          <NavbarLinkExtended
+            onClick={() => {
+              setExtendNavbar(!extendNavbar)
+            }}
+            to="/aboutUs"
+          >
+            About Us
+          </NavbarLinkExtended>
+          <NavbarLinkExtended
+            onClick={() => {
+              setExtendNavbar(!extendNavbar)
+            }}
+            to="/career"
+          >
+            Careers
+          </NavbarLinkExtended>
+          <NavbarLinkExtended
+            onClick={() => {
+              setExtendNavbar(!extendNavbar)
+            }}
+            to="/joinWaitList"
+          >
+            Join the Waitlist
+          </NavbarLinkExtended>
 
           <NavbarLinkExtended to="/about">
             Support Prudential
@@ -86,6 +119,6 @@ function Navbar() {
         </NavBarRedInnerContainer>
       </NavBarRedContainer>
     </NavbarContainer>
-  );
+  )
 }
-export default Navbar;
+export default Navbar
