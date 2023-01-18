@@ -1,42 +1,42 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const NavbarContainer = styled.nav`
   width: 100%;
-  height: ${(props) => (props.extendNavbar ? "100vh" : "130px")};
+  height: ${(props) => (props.extendNavbar ? '100vh' : '130px')};
   background-color: white;
   display: flex;
   flex-direction: column;
   @media (min-width: 700px) {
     height: 130px;
   }
-`;
+`
 
 export const LeftContainer = styled.div`
   flex: 70%;
   display: flex;
   align-items: center;
   //padding-left: 5%;
-`;
+`
 
 export const RightContainer = styled.div`
-  flex: 80%;
+  // flex: 80%;
   display: flex;
   justify-content: center;
-  padding-right: 50px;
+  // padding-right: 50px;
   align-items: center;
   //justify-content: center;
-`;
+`
 
 export const NavbarInnerContainer = styled.div`
   width: 100%;
   height: 80px;
   display: flex;
-`;
+`
 
 export const NavbarLinkContainer = styled.div`
   display: flex;
-`;
+`
 
 export const NavbarLink = styled(Link)`
   color: white;
@@ -47,7 +47,7 @@ export const NavbarLink = styled(Link)`
   @media (max-width: 700px) {
     display: none;
   }
-`;
+`
 
 export const NavbarLinkExtended = styled(Link)`
   color: gray;
@@ -55,7 +55,7 @@ export const NavbarLinkExtended = styled(Link)`
   font-family: Arial, Helvetica, sans-serif;
   text-decoration: none;
   margin: 10px;
-`;
+`
 
 export const Logo = styled.img`
   margin: 10px;
@@ -64,7 +64,7 @@ export const Logo = styled.img`
   // @media (max-width: 700px) {
   //   display: none;
   // }
-`;
+`
 
 export const OpenLinksButton = styled.button`
   width: 70px;
@@ -77,7 +77,7 @@ export const OpenLinksButton = styled.button`
   @media (min-width: 700px) {
     display: none;
   }
-`;
+`
 
 export const NavbarExtendedContainer = styled.div`
   display: flex;
@@ -86,7 +86,7 @@ export const NavbarExtendedContainer = styled.div`
   @media (min-width: 700px) {
     display: none;
   }
-`;
+`
 
 export const SearchBarContainer = styled.input`
   width: 200px;
@@ -96,18 +96,18 @@ export const SearchBarContainer = styled.input`
   @media (max-width: 700px) {
     display: none;
   }
-`;
+`
 export const Banner = styled.img`
   margin: 10px;
   max-width: 100%;
   height: 50px;
-`;
+`
 
 export const BlankDiv = styled.div`
   margin: 10px;
   max-width: 100%;
-  height: 200px;
-`;
+  height: 100px;
+`
 
 export const PrudentialLogo = styled.img`
   margin: 130px;
@@ -117,7 +117,7 @@ export const PrudentialLogo = styled.img`
     margin: 0px;
     width: 120px;
   }
-`;
+`
 
 export const ToggleContainer = styled.div`
   width: 300px
@@ -125,7 +125,9 @@ export const ToggleContainer = styled.div`
   display: flex;
   background: white;
   margin: 15px;
-  
+   @media (max-width: 700px) {
+    display: none;
+  }
 `
 export const TogglePersonalContainer = styled.button`
   width: 100px;
@@ -141,7 +143,6 @@ export const TogglePersonalContainer = styled.button`
   @media (max-width: 700px) {
     display: none;
   }
-
 `
 export const ToggleEterpriseContainer = styled.button`
   width: 100px;
@@ -187,12 +188,12 @@ export const NavBarRedContainer = styled.div`
   }
 `
 export const NavBarRedInnerContainer = styled.div`
-display: flex;
-background-color: #ed1b2e;
-min-width:700px;         
-width: auto !important; 
-height: 60px;
-border-radius: 5px;
-justify-content: center;
-align-items: center;
+  display: flex;
+  background-color: #ed1b2e;
+  min-width: 700px;
+  width: auto !important;
+  height: 60px;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
 `
