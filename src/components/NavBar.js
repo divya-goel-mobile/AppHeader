@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import {
   NavbarContainer,
   LeftContainer,
@@ -28,7 +28,7 @@ import LogoImg from "../assets/prudential-logo.jpeg";
 //import BannerImg from "../assets/banner.png";
 
 function Navbar() {
-  const [extendNavbar, setExtendNavbar] = useState(false)
+  const [extendNavbar, setExtendNavbar] = useState(false);
   return (
     <NavbarContainer extendNavbar={extendNavbar}>
       {/* <Banner src={BannerImg}></Banner> */}
@@ -49,10 +49,10 @@ function Navbar() {
             <Logo src={MessageLogo}></Logo>
             <OpenLinksButton
               onClick={() => {
-                setExtendNavbar(!extendNavbar)
+                setExtendNavbar(!extendNavbar);
               }}
             >
-              {' '}
+              {" "}
               {extendNavbar ? <>&#10005;</> : <> &#8801;</>}
             </OpenLinksButton>
           </div>
@@ -67,42 +67,17 @@ function Navbar() {
         <NavbarExtendedContainer>
           <NavbarLinkExtended
             onClick={() => {
-              setExtendNavbar(!extendNavbar)
+              setExtendNavbar(!extendNavbar);
             }}
             to="/home"
           >
-            {' '}
+            {" "}
             Home
           </NavbarLinkExtended>
           <NavbarLinkExtended to="/products">Products</NavbarLinkExtended>
-<<<<<<< HEAD
           <NavbarLinkExtended to="/aboutUs">About Us</NavbarLinkExtended>
           <NavbarLinkExtended to="/claims">Claims</NavbarLinkExtended>
           <NavbarLinkExtended to="/joinWaitList">
-=======
-          <NavbarLinkExtended
-            onClick={() => {
-              setExtendNavbar(!extendNavbar)
-            }}
-            to="/aboutUs"
-          >
-            About Us
-          </NavbarLinkExtended>
-          <NavbarLinkExtended
-            onClick={() => {
-              setExtendNavbar(!extendNavbar)
-            }}
-            to="/career"
-          >
-            Careers
-          </NavbarLinkExtended>
-          <NavbarLinkExtended
-            onClick={() => {
-              setExtendNavbar(!extendNavbar)
-            }}
-            to="/joinWaitList"
-          >
->>>>>>> 8820f4514953e4a21ecbdfec27b37b62ffd42786
             Join the Waitlist
           </NavbarLinkExtended>
 
@@ -125,6 +100,6 @@ function Navbar() {
         </NavBarRedInnerContainer>
       </NavBarRedContainer>
     </NavbarContainer>
-  )
+  );
 }
-export default Navbar
+export default Navbar;
