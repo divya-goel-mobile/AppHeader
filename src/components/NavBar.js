@@ -19,7 +19,7 @@ import {
   ToggleEterpriseContainer,
   LoginButton,
   NavBarRedContainer,
-  NavBarRedInnerContainer
+  NavBarRedInnerContainer,
 } from "../styles/Navbar.styles";
 import MessageLogo from "../assets/message.png";
 import SearchImg from "../assets/search.png";
@@ -35,11 +35,16 @@ function Navbar() {
       <NavbarInnerContainer>
         <LeftContainer>
           <PrudentialLogo src={LogoImg}></PrudentialLogo>
-         
         </LeftContainer>
         <RightContainer>
           <ToggleContainer></ToggleContainer>
-          <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <Logo src={SearchImg}></Logo>
             <Logo src={MessageLogo}></Logo>
             <OpenLinksButton
@@ -57,15 +62,16 @@ function Navbar() {
           </ToggleContainer>
           <LoginButton>Login</LoginButton>
         </RightContainer>
-
       </NavbarInnerContainer>
       {extendNavbar && (
         <NavbarExtendedContainer>
           <NavbarLinkExtended to="/home"> Home</NavbarLinkExtended>
           <NavbarLinkExtended to="/products">Products</NavbarLinkExtended>
           <NavbarLinkExtended to="/aboutUs">About Us</NavbarLinkExtended>
-          <NavbarLinkExtended to="/career">Careers</NavbarLinkExtended>
-          <NavbarLinkExtended to="/joinWaitList">Join the Waitlist</NavbarLinkExtended>
+          <NavbarLinkExtended to="/claims">Claims</NavbarLinkExtended>
+          <NavbarLinkExtended to="/joinWaitList">
+            Join the Waitlist
+          </NavbarLinkExtended>
 
           <NavbarLinkExtended to="/about">
             Support Prudential
@@ -81,7 +87,7 @@ function Navbar() {
           <NavbarLink to="/home"> We Do</NavbarLink>
           <NavbarLink to="/products">Products</NavbarLink>
           <NavbarLink to="/aboutUs">About Us</NavbarLink>
-          <NavbarLink to="/career">Careers</NavbarLink>
+          <NavbarLink to="/Claims">Claims</NavbarLink>
           <NavbarLink to="/joinWaitList">Join the Waitlist</NavbarLink>
         </NavBarRedInnerContainer>
       </NavBarRedContainer>
